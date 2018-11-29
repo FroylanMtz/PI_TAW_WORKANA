@@ -12,8 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/proyectos', function () {
+    return view('proyectos');
+});
+
 
 Auth::routes();
 
