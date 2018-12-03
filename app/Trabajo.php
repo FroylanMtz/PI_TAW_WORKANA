@@ -11,9 +11,7 @@ class Trabajo extends Model
 
     protected static function boot()
     {
-
-        parent::boot();
-        
+        parent::boot();   
     }
 
     public function traerDatos(){

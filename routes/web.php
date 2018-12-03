@@ -18,7 +18,6 @@ Route::get('/categorias', function () {
     return view('categorias');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
