@@ -8,6 +8,9 @@
 
         <link rel="shortcut icon" href="images/fav_icon.png" type="image/x-icon">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">   
+
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -20,6 +23,8 @@
         <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
 
         <link rel="stylesheet" type="text/css" href="css/login.css">
+
+        <link rel="stylesheet" type="text/css" href="css/admin.css">
 
         <style>
     
@@ -60,21 +65,13 @@
                     <a class="navbar-item" href="/tienda">
                         Tienda
                     </a>
-
-                    <a class="navbar-item" href="/categorias">
-                        Categorias
-                    </a>
                 
                 </div>
             
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-
-                            <a class="button is-warning is-outlined" href="/login">
-                                <strong> <i class="fas fa-arrow-up"></i> Publicar un trabajo </strong>
-                            </a>
-
+                        @guest
                             <a class="button is-info is-outlined" href="/register">
                                 <strong> <i class="fas fa-user-plus"></i> Registrarse </strong>
                             </a>
@@ -82,6 +79,46 @@
                             <a class="button is-success is-outlined" href="/login">
                                 <strong> <i class="fas fa-sign-in-alt"></i> Iniciar Sesion </strong>
                             </a>
+                        @else
+                            <a class="button is-warning is-outlined" href="/login">
+                                <strong> <i class="fas fa-arrow-up"></i> Publicar un trabajo </strong>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable">
+
+                                <a class="navbar-link">
+                                    Cuenta
+                                </a>
+
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item" href="/home">
+                                        Dashboard
+                                    </a>
+                                    <a class="navbar-item">
+                                        Perfil
+                                    </a>
+                                    <a class="navbar-item">
+                                        Configuracion
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <div class="navbar-item">
+
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                          document.getElementById('logout-form').submit();">
+                                             {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endguest
+                        
                         </div>
                     </div>
                 </div>

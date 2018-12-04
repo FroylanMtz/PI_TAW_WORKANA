@@ -17,7 +17,7 @@
         </nav>
 
         <p class="has-text-white is-size-3">
-            Trabajos disponibles {{$t->id}}
+            Trabajos disponibles 
         </p>
     </div>
 

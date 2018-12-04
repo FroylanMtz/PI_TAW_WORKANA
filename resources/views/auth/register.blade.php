@@ -12,10 +12,16 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="email" placeholder="Nombre (s)" autofocus="">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -26,10 +32,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="field">
+                            <div class="control">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -40,10 +47,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <div class="field">
+                            <div class="control">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -54,21 +61,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                        <div class="field">
+                            <div class="control">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
+
+                        <button class="button is-block is-info is-large is-fullwidth" type="submit"> {{ __('Register') }} </button>
+                           
+
                     </form>
                 </div>
             </div>
@@ -89,43 +93,46 @@
                     
                     <h3 class="title has-text-grey">Registro</h3>
 
-                    <form>
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="email" placeholder="Nombre (s)" autofocus="">
+                                <input class="input is-large" type="text"  placeholder="Nombre (s)" autofocus="" id="firstname" name="firstname" required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="email" placeholder="Apellido (s)" autofocus="">
+                                <input class="input is-large" type="text" placeholder="Apellido (s)" autofocus="" id="lastname" name="lastname" required>
                             </div>
                         </div>
                         
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="email" placeholder="Telefono" autofocus="">
+                                <input class="input is-large" type="text" placeholder="Telefono" autofocus="" id="phone" name="phone" required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="email" placeholder="Correo" autofocus="">
+                                <input class="input is-large" type="email" placeholder="Correo" autofocus="" id="email" name="email" required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="password" placeholder="Contraseña">
+                                <input class="input is-large" type="password" placeholder="Contraseña" id="password" name="password" required>
                             </div>
                         </div>
+
                         <button class="button is-block is-info is-large is-fullwidth">Guardar</button>
                     </form>
                 </div>
 
                 <p class="has-text-grey">
-                    <a href="../">Registrarse</a> &nbsp;·&nbsp;
-                    <a href="../">¿Olvidaste tu contraeña?</a>
+                    <a href="/login">Iniciar Sesion</a> &nbsp;·&nbsp;
+                    <a href="/">Inicio</a>
                 </p>
                 
             </div>

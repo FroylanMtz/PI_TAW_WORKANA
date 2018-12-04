@@ -28,10 +28,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone');
-            $table->unsignedInteger('category');
-            $table->unsignedDecimal('salary');
-            $table->string('photo');
-            $table->string('privacity');
+            $table->unsignedInteger('category')->nullable();
+            $table->unsignedDecimal('salary')->nullable();
+            $table->string('photo')->default('no-photo.png');
+            $table->string('privacity')->default('public');
             $table->rememberToken();
             $table->timestamps();
 

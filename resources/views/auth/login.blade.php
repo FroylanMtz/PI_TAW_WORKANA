@@ -85,25 +85,43 @@
                     
                     <h3 class="title has-text-grey">Iniciar Sesion</h3>
 
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
                         <div class="field">
-                            <div class="control">
-                                <input class="input is-large" type="email" placeholder="Correo" autofocus="">
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="input is-large" name="email" value="{{ old('email') }}" placeholder="Correo" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="password" placeholder="Contraseña">
+                               
+                                <input id="password" type="password" class="input is-large" name="password" placeholder="Contraseña" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <button class="button is-block is-info is-large is-fullwidth">Entrar</button>
+
+                        <button type="submit" class="button is-block is-info is-large is-fullwidth">
+                            {{ __('Login') }}
+                        </button>
                     </form>
                 </div>
 
                 <p class="has-text-grey">
-                    <a href="../">Registrarse</a> &nbsp;·&nbsp;
-                    <a href="../">¿Olvidaste tu contraeña?</a>
+                    <a href="/register">Registrarse</a> &nbsp;·&nbsp;
+                    <a href="/">Inicio</a>
                 </p>
 
             </div>
