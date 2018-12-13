@@ -10,28 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    /*protected $fillable = [
-        'name', 'email', 'password',
-    ];*/
-
     protected $guarded = [];
+	
+		//protected $primaryKey = 'user_id';
 
-    /*public function opioniones(){
-        //return $this->hasMany();
-    }*/
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
 
@@ -44,6 +28,12 @@ class User extends Authenticatable
     public function skills()
     {
         return $this->belongsToMany('App\Skill');
-    }
-
+		}
+	
+		public function jobs()
+		{
+				return $this->hasMany('App\Job');
+		}
+  
+   public $timestamps = false;#a ve si funciona con esto
 }

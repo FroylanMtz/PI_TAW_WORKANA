@@ -34,6 +34,7 @@
 .select:not(.is-multiple):not(.is-loading)::after, .navbar-link:not(.is-arrowless)::after {
   border: 3px solid transparent;
   border-radius: 2px;
+  border-radius: 10px;
   border-right: 0;
   border-top: 0;
   content: " ";

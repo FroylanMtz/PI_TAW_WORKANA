@@ -18,35 +18,48 @@
 
         <p class="has-text-white is-size-3">
             Trabajos disponibles 
+
         </p>
     </div>
-
-    
-    <div class="column is-4">
-        <div class="card">
-            <header class="card-header">
-                <p class="card-header-title">
-                    Component
-                </p>
-            </header>
-            <div class="card-content">
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    <div class="container">
+      <div class="row columns is-multiline ">
+        @foreach ($trabajos as $trabajo)
+              @if($trabajo->estado!='Finalizado')
+                 @if($trabajo->estado!='Elegido')
+                   <div class="column is-one-third">
+                    <div class="card large">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-128x128">
+                                        @foreach($usuarios as $usuario)
+                                          @if($trabajo->user_id == $usuario->id)
+                                            <img class="is-rounded" src="images/{{ $usuario->photo }}" alt="Image">
+                                          @endif
+                                        @endforeach
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4 no-padding">{{$trabajo->titulo}}</p>
+                                    <p class="subtitle is-6">Desarrollador</p>
+                                    <p>Estado : {{$trabajo->estado}}</p>
+                                    <a href="/propuesta/{{$trabajo->id}}" class="button is-primary">Mandar Propuesta</a>
+                                </div>
+                            </div>
+                            <div class="content">{{$trabajo->minidescripcion}}
+                                <div class="background-icon"><span class="icon-twitter"></span>
+                                  </button></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <footer class="card-footer">
-                <a href="#" class="card-footer-item">Save</a>
-                <a href="#" class="card-footer-item">Edit</a>
-                <a href="#" class="card-footer-item">Delete</a>
-            </footer>
+                @endif
+              @endif
+      @endforeach
+               
         </div>
-    </div>
-
-   
-</section>
-
+      </div>
 
 @endsection
+
+

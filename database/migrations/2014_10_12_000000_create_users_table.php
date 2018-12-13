@@ -24,12 +24,15 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
+						$table->text('about')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone');
             $table->unsignedInteger('category')->nullable();
             $table->unsignedDecimal('salary')->nullable();
+            $table->text('acerca')->nullable();
+						$table->text('skills')->nullable();
             $table->string('photo')->default('no-photo.png');
             $table->string('privacity')->default('public');
             $table->rememberToken();

@@ -16,8 +16,9 @@ class CreateOpinionsTable extends Migration
         Schema::create('opinions', function (Blueprint $table) {
             $table->unsignedInteger('id_empleado');
             $table->unsignedInteger('id_empleador');
+            $table->unsignedInteger('id_proyecto');
             $table->text('decripcion');
-            $table->unsignedDecimal('calificacion');
+            $table->unsignedInteger('ranking');
             $table->date('fecha');
 
             $table->foreign('id_empleado')->references('id')->on('users')->onDelete('cascade');
